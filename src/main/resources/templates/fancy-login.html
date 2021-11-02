@@ -1,0 +1,118 @@
+<!DOCTYPE HTML>
+<html lang="en"
+
+	  xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<!-- Required meta tags -->
+	<meta charset="utf-8">
+	<meta content="width=device-width, initial-scale=1, shrink-to-fit=no" name="viewport">
+
+	<!-- Bootstrap CSS -->
+	<link crossorigin="anonymous" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css"
+		  integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" rel="stylesheet">
+	<meta content="ie=edge" http-equiv="x-ua-compatible">
+
+	<title>Login</title>
+
+	<meta content="width=device-width, initial-scale=1" name="viewport">
+	<link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+	<link href="https://use.fontawesome.com/releases/v5.4.1/css/all.css" rel="stylesheet">
+	<link href="../css/fonts.css" rel="stylesheet">
+
+	<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+
+
+	<!-- Bootstrap core CSS -->
+	<link href="../../dist/css/bootstrap.min.css" rel="stylesheet">
+
+	<!-- Custom styles for this template -->
+	<link href="signin.css" rel="stylesheet">
+
+
+	<style>
+		body {
+            border: 1px solid #ccc;
+            background-color: #ffffff;
+        }
+	</style>
+</head>
+
+
+<body class="p-3 mb-2 bg-light text-black">
+<div class="container justify-content-center w-25 p-3" style="background-color: #eeeeee; margin-top: 5em;">
+
+	<meta charset="utf-8">
+	<meta content="width=device-width, initial-scale=1, shrink-to-fit=yes" name="viewport">
+
+	<title>Login</title>
+
+	<!-- Login Form -->
+
+	<form class="form-horizontal"
+		  method="POST" th:action="@{/authenticateTheUser}">
+
+		<!-- Place for messages: error, alert etc ... -->
+		<div class="form-group">
+			<div class="col-xs-15">
+				<div>
+
+
+					<!-- Check for login error -->
+
+					<div th:if="${param.error}">
+
+						<div class="alert alert-danger col-xs-offset-1 col-xs-10">Invalid username and password.</div>
+
+					</div>
+
+					<!-- Check for logout -->
+
+					<div th:if="${param.logout}">
+
+						<div class="alert alert-success col-xs-offset-1 col-xs-10">
+							You have been logged out.
+						</div>
+
+					</div>
+
+				</div>
+			</div>
+		</div>
+
+
+		<h1 class="h3 mb-3 font-weight-normal">Please sign in</h1>
+
+
+		<!-- User name -->
+		<div class="input-group" style="margin-bottom: 25px"><span class="input-group-addon"><i
+				class="glyphicon glyphicon-user"></i></span>
+
+			<input class="form-control" name="username" placeholder="username" type="text"></div>
+
+		<!-- Password -->
+		<div class="input-group" style="margin-bottom: 25px"><span class="input-group-addon"><i
+				class="glyphicon glyphicon-lock"></i></span>
+
+			<input class="form-control" name="password" placeholder="password" type="password"></div>
+
+
+		<!-- Login/Submit Button -->
+		<div class="form-group" style="margin-top: 10px">
+			<div class="col-sm-6 controls">
+				<button class="btn btn-success" type="submit">Login</button>
+			</div>
+		</div>
+	</form>
+
+	<br>
+	<br>
+	<footer><b>Xeodev 2021</b></footer>
+	<hr>
+</div>
+
+
+</body>
+
+</html>
+

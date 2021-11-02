@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="x-ua-compatible" content="ie=edge">
+	<title>Work Force Directory</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css">
+	<link rel="stylesheet" type="text/css" th:href="@{/css/custom.css}" />
+	<link rel="stylesheet" type="text/css" href="http://cdn.jsdelivr.net/webjars/bootstrap/4.1.0/css/bootstrap.min.css" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}" />
+	<script src="http://cdn.jsdelivr.net/webjars/bootstrap/4.1.0/js/bootstrap.min.js" th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script>
+	<script src="http://cdn.jsdelivr.net/webjars/jquery/3.3.1/jquery.min.js" th:src="@{/webjars/jquery/jquery.min.js}"></script>
+
+	<style>
+		body {
+			border: 2px solid #ccc;
+			background-color: #ffffff;
+		}
+	</style>
+
+	<style>
+		h3 {
+			color: #002ede;
+			font-family: Arial;
+			text-align: left;
+		}
+	</style>
+
+	<style>
+		h4 {
+			color: #000000;
+			font-family: Arial;
+			text-align: left;
+		}
+	</style>
+</head>
+
+<body>
+
+
+<div class="container">
+	<nav class="navbar navbar-dark bg-dark navbar-expand-sm">
+		<div class="container-fluid">
+			<a class="navbar-brand" href="#">SRRT </a>
+
+			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-list" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+				<span class="navbar-toggler-icon"></span>
+			</button>
+
+			<div class="collapse navbar-collapse justify-content-between" id="navbar-list">
+				<ul class="navbar-nav">
+					<li class="nav-item">
+						<a class="nav-link" th:href ="@{/home}">Home</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link " th:href="@{/projects/list}">Projects</a>
+					</li>
+
+					<li class="nav-item">
+						<a class="nav-link " th:href="@{/employees/list}">Employees</a>
+					</li>
+
+					<li class="nav-item">
+						<a class="nav-link" th:href="@{/invoices/list}">Invoices</a>
+					</li>
+
+					<li class="nav-item">
+						<a class="nav-link" th:href="@{/notes/list}">Notes</a>
+					</li>
+
+					<li class="nav-item">
+						<a class="nav-link" th:href="@{/tasks/list}">Tasks</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link active" th:href="@{/workers/list}">Workers</a>
+					</li>
+
+				</ul>
+			</div>
+
+			<ul class="navbar-nav ml-auto">
+				<li class="nav-item">
+					<form th:action="@{/logout}" method="post">
+						<button class="btn btn-danger" type="submit">Logout</button>
+					</form>
+				</li>
+			</ul>
+		</div>
+
+	</nav>
+</div>
+
+<div class="container">
+
+	<div class="alert alert-dark" role="alert">
+		<h4><b>Work Force Directory</b></h4>
+	</div>
+	<hr>
+
+	<form th:action="@{/workers/search}" class="form-inline">
+		<a th:href="@{/workers/showFormForAdd}"
+		   class="btn btn-primary btn-sm mr-5 mb-3">
+			Add Worker
+        </a>
+
+        <input class="form-control  ml-5 mr-sm-2 mb-3" name="workerName" placeholder="Search by name" type="search"/>
+
+        <button class="btn btn-success mb-3" type="submit">Search</button>
+    </form>
+
+    <table class="table thead-info table-light table-striped table-hover">
+        <thead class="thead-dark">
+        <tr>
+            <th>First Name</th>
+			<th>Last Name</th>
+            <th>Phone Number</th>
+            <th>Agency</th>
+			<th>Location</th>
+            <th>Date</th>
+            <th>Start Time</th>
+			<th>Hours Worked</th>
+            <th>Modify Record</th>
+        </tr>
+        </thead>
+
+		<tbody>
+		<tr th:each="tempWorker : ${workers}">
+
+			<td th:text="${tempWorker.firstName}" />
+			<td th:text="${tempWorker.lastName}" />
+			<td th:text="${tempWorker.phoneNumber}" />
+			<td th:text="${tempWorker.agency}" />
+			<td th:text="${tempWorker.location}" />
+			<td th:text="${tempWorker.date}" />
+			<td th:text="${tempWorker.startTime}"/>
+			<td th:text="${tempWorker.hoursWorked}"/>
+
+			<td>
+
+					<!-- Add "update" button/link -->
+					<a th:href="@{/workers/showFormForUpdate(workerId=${tempWorker.id})}"
+					   class="btn btn-primary fas fa-plus-square">
+					</a>
+					<!-- Add "delete" button/link -->
+					<a class="btn btn-danger fas fa-trash"
+                       th:href="@{/workers/delete(workerId=${tempWorker.id})}"
+                       onclick="if (!(confirm('Are you sure you want to delete this worker?'))) return false">
+                    </a>
+
+            </td>
+
+        </tr>
+
+        </tbody>
+    </table>
+
+    <br>
+    <br>
+    <footer><b>Xeodev 2021</b></footer>
+    <hr>
+
+</div>
+
+</body>
+</html>
+
+
+

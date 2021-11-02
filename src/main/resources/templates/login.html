@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>Login</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/webjars/bootstrap/4.1.0/css/bootstrap.min.css"
+          th:href="@{/webjars/bootstrap/css/bootstrap.min.css}" />
+    <script src="https://cdn.jsdelivr.net/webjars/bootstrap/4.1.0/js/bootstrap.min.js"
+            th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script>
+    <script src="https://cdn.jsdelivr.net/webjars/jquery/3.3.1/jquery.min.js"
+            th:src="@{/webjars/jquery/jquery.min.js}"></script>
+</head>
+
+<body>
+<div class="container">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">SRRT     </a>
+
+            <div class="collapse navbar-collapse" id="navbarText">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link active" th:href ="@{/home}">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link " th:href="@{/projects/list}">Projects</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" th:href="@{/employees/list}">Employees</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" th:href="@{/invoices/list}">Invoices</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" th:href="@{/notes/list}">Notes</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" th:href="@{/tasks/list}">Tasks</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link " th:href="@{/workers/list}">Workers</a>
+                    </li>
+                </ul>
+
+            </div>
+
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <form th:action="@{/logout}" method="post">
+                        <button class="btn btn-danger" type="submit">Logout</button>
+                    </form>
+                </li>
+            </ul>
+        </div>
+</nav>
+<div class="container my-5">
+    <div class="row">
+        <div class="col-md-3"></div>
+        <div class="col-md-6 bg-dark text-light text-center border rounded-top border-bottom-0 border-dark p-1">
+            <h5 class="font-weight-bold">Login</h5>
+        </div>
+        <div class="col-md-3"></div>
+    </div>
+    <div class="row">
+        <div class="col-md-3"></div>
+        <div class="col-md-6 bg-light border rounded-bottom border-dark p-3">
+            <div th:if="${loginError}" class="alert alert-danger">Wrong Username or Password</div>
+            <div th:if="${loginVerified}" class="alert alert-success">Account has been verified. Please sign-in
+            </div>
+            <div th:if="${loginDisabled}" class="alert alert-danger">Account is not yet active. Please check your
+                email</div>
+            <form th:action="@{/login}" method="post">
+                <div class="form-group">
+                    <label for="username">Username</label>
+                    <input type="text" class="form-control" name="username" placeholder="Enter Username" required
+                           autofocus>
+                </div>
+                <div class="form-group">
+                    <label for="password">Password</label>
+                    <input type="password" class="form-control" name="password" placeholder="Enter Password"
+                           required autofocus>
+                </div>
+                <div class="text-center">
+                    <button type="submit" class="btn btn-dark">Submit</button>
+                    <a class="btn btn-success" href="#" th:href="@{/adduser}">Register</a>
+                </div>
+            </form>
+        </div>
+        <div class="col-md-3"></div>
+    </div>
+</div>
+
+</div>
+</body>
+
+</html>

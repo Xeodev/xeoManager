@@ -1,0 +1,159 @@
+
+
+	<!DOCTYPE html>
+	<html xmlns:th="http://www.thymeleaf.org" lang="en">
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="x-ua-compatible" content="ie=edge">
+		<title>Save Worker</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css">
+		<link rel="stylesheet" type="text/css" th:href="@{/css/custom.css}" />
+		<link rel="stylesheet" type="text/css" href="http://cdn.jsdelivr.net/webjars/bootstrap/4.1.0/css/bootstrap.min.css" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}" />
+		<script src="http://cdn.jsdelivr.net/webjars/bootstrap/4.1.0/js/bootstrap.min.js" th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script>
+		<script src="http://cdn.jsdelivr.net/webjars/jquery/3.3.1/jquery.min.js" th:src="@{/webjars/jquery/jquery.min.js}"></script>
+
+	<style>
+		body {
+            border: 2px solid #ccc;
+            background-color: #ffffff;
+        }
+	</style>
+
+	<style>
+		h3 {
+			color: #002ede;
+			font-family: Arial;
+			text-align: left;
+		}
+	</style>
+
+		<style>
+			h4 {
+				color: #000000;
+				font-family: Arial;
+				text-align: left;
+			}
+		</style>
+</head>
+<body>
+<div class="container">
+	<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+		<div class="container-fluid">
+			<a class="navbar-brand" href="#">SRRT</a>
+			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-list" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+				<span class="navbar-toggler-icon"></span>
+			</button>
+			<div class="collapse navbar-collapse justify-content-between" id="navbar-list">
+				<ul class="navbar-nav">
+				<ul class="navbar-nav me-auto mb-2 mb-lg-0">
+					<li class="nav-item">
+						<a class="nav-link" th:href ="@{/home}">Home</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link " th:href="@{/projects/list}">Projects</a>
+					</li>
+
+					<li class="nav-item">
+						<a class="nav-link " th:href="@{/employees/list}">Employees</a>
+					</li>
+
+					<li class="nav-item">
+						<a class="nav-link" th:href="@{/invoices/list}">Invoices</a>
+					</li>
+
+					<li class="nav-item">
+						<a class="nav-link" th:href="@{/notes/list}">Notes</a>
+					</li>
+
+					<li class="nav-item">
+						<a class="nav-link" th:href="@{/tasks/list}">Tasks</a>
+					</li>
+
+					<li class="nav-item">
+						<a class="nav-link active" th:href="@{/workers/list}">Workers</a>
+					</li>
+				</ul>
+      </ul>
+			</div>
+
+			<ul class="navbar-nav ml-auto">
+				<li class="nav-item">
+					<form th:action="@{/logout}" method="post">
+						<button class="btn btn-danger" type="submit">Logout</button>
+					</form>
+				</li>
+			</ul>
+		</div>
+
+	</nav>
+	<div class="alert alert-dark" role="alert">
+		<h4><b><i>Add a Worker</i></b></h4>
+	</div>
+</div>
+<div class="container my-5">
+    <hr>
+    <br>
+	<div class="row">
+		<div class="col-md-2"></div>
+		<div class="col-md-8">
+    <form th:action="@{/workers/save}"
+          th:object="${worker}" method="POST">
+        <!-- Add hidden form field to handle update -->
+        <input type="hidden" th:field="*{id}"/>
+
+        <input type="text" th:field="*{firstName}"
+               class="form-control mb-4 col-5" placeholder="First Name">
+
+
+        <input required th:field="*{lastName}" type="text"
+               class="form-control mb-4 col-5" placeholder="Last Name">
+
+
+		<input required th:field="*{phoneNumber}" type="text"
+			   class="form-control mb-4 col-5" placeholder="Phone Number">
+
+		<input required th:field="*{agency}" type="text"
+			   class="form-control mb-4 col-5" placeholder="Agency">
+
+		<input required th:field="*{location}" type="text"
+			   class="form-control mb-4 col-5" placeholder="Location of deployment">
+
+        <input required th:field="*{date}" type="datetime-local"
+			   class="form-control mb-4 col-5" placeholder="Start Date">
+
+		<input  required  th:field="*{startTime}" type="time"
+		 class="form-control mb-4 col-5" placeholder="Start Time">
+
+		<input required th:field="*{hoursWorked}" type="text"
+			   class="form-control mb-4 col-5" placeholder="Hours Worked">
+
+
+
+        <button type="submit" class="btn btn-info col-2">Save</button>
+    </form>
+<br>
+    <a class="btn btn-primary btn-sm mr-5 mb-3" th:href="@{/projects/list}">Back to Projects</a>
+
+    <br>
+    <br>
+    <footer><b>Xeodev 2021</b></footer>
+
+</div>
+	</div>
+
+</div>
+<hr>
+</body>
+
+</html>
+
+
+
+
+
+
+
+
+
+
