@@ -17,48 +17,10 @@
 
 <body>
 <div class="container">
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-        <div class="container-fluid">
-            <a class="navbar-brand" href="#">SRRT     </a>
-
-            <div class="collapse navbar-collapse" id="navbarText">
-                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                    <li class="nav-item">
-                        <a class="nav-link active" th:href ="@{/home}">Home</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link " th:href="@{/projects/list}">Projects</a>
-                    </li>
-
-                    <li class="nav-item">
-                        <a class="nav-link" th:href="@{/employees/list}">Employees</a>
-                    </li>
 
 
-                    <li class="nav-item">
-                        <a class="nav-link" th:href="@{/notes/list}">Notes</a>
-                    </li>
 
-                    <li class="nav-item">
-                        <a class="nav-link" th:href="@{/tasks/list}">Tasks</a>
-                    </li>
 
-                    <li class="nav-item">
-                        <a class="nav-link " th:href="@{/workers/list}">Workers</a>
-                    </li>
-                </ul>
-
-            </div>
-
-            <ul class="navbar-nav ml-auto">
-                <li class="nav-item">
-                    <form th:action="@{/logout}" method="post">
-                        <button class="btn btn-danger" type="submit">Logout</button>
-                    </form>
-                </li>
-            </ul>
-        </div>
-</nav>
 <div class="container my-5">
     <div class="row">
         <div class="col-md-3"></div>
